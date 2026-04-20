@@ -1,1 +1,106 @@
-Pain of Pyramid:
+Pain of Pyramid: 
+
+ Hash Values(Trivial):
+
+ The hash value is a numeric value of a fixed length that uniquely identifies data. A hash value is the result of a hashing 
+ algorithm. The following are some of the most common hashing algorithms: 
+
+  ->MD5: It is a cryptographic hash function with a 128-bit hash value. MD5 hashes are NOT considered cryptographically secure. 
+    In 2011, the IETF published RFC 6151, "Updated Security Considerations for the MD5 Message-Digest and the HMAC-MD5 
+    Algorithms," which mentioned a number of attacks against MD5 hashes, including the hash collision.
+
+  ->SHA1: When data is fed to SHA-1 Hashing Algorithm, SHA-1 takes an input and produces a 160-bit hash value string as a 40 
+    digit hexadecimal number. NIST deprecated the use of SHA-1 in 2011 and banned its use for digital signatures at the end 
+    of 2013 based on it being susceptible to brute-force attacks.
+
+  ->SHA2: SHA-2 Hashing Algorithm was designed by The National Institute of Standards and Technology (NIST) and the National 
+    Security Agency (NSA) in 2001 to replace SHA-1. SHA-2 has many variants, and arguably the most common is SHA-256. The SHA-256 
+    algorithm returns a hash value of 256-bits as a 64 digit hexadecimal number.
+
+  A hash is not considered to be cryptographically secure if two files have the same hash value or digest.
+
+ Security professionals usually use the hash values to gain insight into a specific malware sample, a malicious or a suspicious 
+ file, and as a way to uniquely identify and reference the malicious artifact.
+ Various online tools can be used to do hash lookups like VirusTotal and Metadefender Cloud - OPSWAT.
+ It is really easy to spot a malicious file if we have the hash. However, as an attacker, modifying a file by even a single bit is 
+ trivial, which would produce a different hash value. With so many variations and instances of known malware or ransomware, threat 
+ hunting using file hashes as the IOC (Indicators of Compromise) can become difficult.
+
+ 
+ IP address(Easy):
+
+ From a defense standpoint, knowledge of the IP addresses an adversary uses can be valuable. A common defense tactic is to 
+ block, drop, or deny inbound requests from IP addresses on your parameter or external firewall. This tactic is often not 
+ bulletproof as it’s trivial for an experienced adversary to recover simply by using a new public IP address.
+ One of the ways an adversary can make it challenging to successfully carry out IP blocking is by using Fast Flux.
+ According to Akamai, Fast Flux is a DNS technique used by botnets to hide phishing, web proxying, malware delivery, 
+ and malware communication activities behind compromised hosts acting as proxies. The purpose of using the Fast Flux network 
+ is to make the communication between malware and its command and control server (C&C) challenging to be discovered by security 
+ professionals. So, the primary concept of a Fast Flux network is having multiple IP addresses associated with a domain name, which 
+ is constantly changing.
+
+ 
+ Domain Names(Simple):
+
+ Domain Names can be thought as simply mapping an IP address to a string of text. A domain name can contain a domain and a 
+ top-level domain (e.g. evilcorp.com ) or a sub-domain followed by a domain and top-level domain. Domain Names can be a little 
+ more of a pain for the attacker to change as they would most likely need to purchase the domain, register it and modify DNS records. 
+ Unfortunately for defenders, many DNS providers have loose standards and provide APIs to make it even easier for the attacker to 
+ change the domain.
+ What is Punycode? As per Jamf, "Punycode is a way of converting words that cannot be written in ASCII, into a Unicode ASCII encoding."
+ Attackers usually hide the malicious domains under URL shorteners.   A URL Shortener is a tool that creates a short and unique URL 
+ that will redirect to the specific website specified during the initial step of setting up the URL Shortener link.
+
+
+ Host Artifacts(Annoying):
+
+ On this level, the attacker will feel a little more annoyed and frustrated if you can detect the attack. The attacker would need to 
+ circle back at this detection level and change his attack tools and methodologies. This is very time-consuming for the attacker, and 
+ probably, he will need to spend more resources on his adversary tools.
+
+ Host artifacts are the traces or observables that attackers leave on the system, such as registry values, suspicious process execution, 
+ attack patterns or IOCs (Indicators of Compromise), files dropped by malicious applications, or anything exclusive to the current threat.
+
+
+ Network Artifacts(Annoying):
+
+ Network Artifacts also belong to the yellow zone in the Pyramid of Pain. This means if you can detect and respond to the threat, the 
+ attacker would need more time to go back and change his tactics or modify the tools, which gives you more time to respond and detect 
+ the upcoming threats or remediate the existing ones.
+ A network artifact can be a user-agent string, C2 information, or URI patterns followed by the HTTP POST requests.An attacker might 
+ use a User-Agent string that hasn’t been observed in your environment before or seems out of the ordinary. The User-Agent is defined 
+ by RFC2616 as the request-header field that contains the information about the user agent originating the request.
+ Network artifacts can be detected in Wireshark PCAPs (file that contains the packet data of a network) by using a network protocol 
+ analyzer such as TShark or exploring IDS (Intrusion Detection System) logging from a source such as Snort.
+
+
+ Tools(Challenging):
+
+ The attacker would most likely give up trying to break into your network or go back and try to create a new tool that serves the same 
+ purpose. It will be a game over for the attackers as they would need to invest some money into building a new tool (if they are capable 
+ of doing so), find the tool that has the same potential, or even gets some training to learn how to be proficient in a certain tool. 
+ Attackers would use the utilities to create malicious macro documents (maldocs) for spearphishing attempts, a backdoor that can be used 
+ to establish C2 (Command and Control Infrastructure), any custom .EXE, and .DLL files, payloads, or password crackers.
+ Antivirus signatures, detection rules, and YARA rules can be great weapons for you to use against attackers at this stage.
+ MalwareBazaar and Malshare are good resources to provide you with access to the samples, malicious feeds, and YARA results - these 
+ all can be very helpful when it comes to threat hunting and incident response. 
+ Fuzzy hashing is also a strong weapon against the attacker's tools. Fuzzy hashing helps you to perform similarity analysis - match two 
+ files with minor differences based on the fuzzy hash values. One of the examples of fuzzy hashing is the usage of SSDeep; on the SSDeep 
+ official website, you can also find the complete explanation for fuzzy hashing. 
+
+
+ TTPs(Tough):
+
+ TTPs stands for Tactics, Techniques & Procedures. This includes the whole MITRE ATT&CK Matrix, which means all the steps taken by an 
+ adversary to achieve his goal, starting from phishing attempts to persistence and data exfiltration. 
+ If you can detect and respond to the TTPs quickly, you leave the adversaries almost no chance to fight back. For, example if you could 
+ detect a Pass-the-Hash attack using Windows Event Log Monitoring and remediate it, you would be able to find the compromised host very 
+ quickly and stop the lateral movement inside your network. At this point, the attacker would have two options:
+
+ 1.Go back, do more research and training, reconfigure their custom tools
+ 2.Give up and find another target
+
+ Option 2 definitely sounds less time and resource-consuming.
+
+
+
