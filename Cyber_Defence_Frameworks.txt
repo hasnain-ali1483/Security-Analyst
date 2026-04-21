@@ -443,3 +443,68 @@ Unified Kill Chain:
    for the attack. For example, if the attack was financially motivated, they may seek to encrypt files and systems 
    with ransomware and ask for payment to release the data. In other instances, the attacker may seek to damage the 
    reputation of the business, and they would release private and confidential information to the public.
+
+
+
+MITRE:
+
+ MITRE is a not-for-profit organization that conducts research and development across a range of domains, including 
+ cyber security, artificial intelligence, healthcare, and space systems, all to support its mission: "to solve problems 
+ for a safer world."
+
+ Att&ck:
+
+  The MITRE ATT&CK® framework is “a globally-accessible knowledge base of adversary tactics and 
+  techniques based on real-world observations. The ATT&CK knowledge base is used as a foundation for the development 
+  of specific threat models and methodologies in the private sector, in government, and in the cyber security product 
+  and service community.” In 2013, MITRE recognized the need to document and categorize the standard tactics, techniques, 
+  and procedures (TTPs) used by advanced persistent threat (APT) groups. To better understand how adversaries operate.
+  
+  The ATT&CK framework has evolved significantly over the years. Focused initially on the Windows platform, it has 
+  expanded to cover a range of environments, including macOS, Linux, cloud platforms, and more, under the Enterprise matrix. 
+  Additionally, specialized frameworks exist for Mobile and Industrial Control Systems (ICS). The framework 
+  continues to grow through contributions from the cyber security community. While incredibly valuable from a defensive 
+  perspective, red teams also rely on the framework to plan realistic attack simulations and test organizations' defenses.
+
+  The MITRE ATT&CK Matrix is a powerful visual representation of all tactics and techniques that exist within the framework. 
+  You can also utilize the ATT&CK Navigator, a handy tool for annotating and exploring matrices. The tactics are represented 
+  across the top of the matrix. Each tactic contains techniques nested below, which can be expanded to reveal sub-techniques.
+
+
+ Cyber Analytics Repository(CAR):
+
+  CAR is a collection of ready-made detection analytics built around ATT&CK. Each analytic describes how to detect an 
+  adversary's behavior. This is key because it allows you to identify the patterns you should look for as a defender. 
+  CAR also provides example queries for common industry tools such as Splunk, so you, as a defender, can translate ATT&CK 
+  TTPs into real detections. 
+
+
+ MITRE D3FEND:
+
+  D3FEND (Detection, Denial, and Disruption Framework Empowering Network Defense) is a structured framework that maps out 
+  defensive techniques and establishes a common language for describing how security controls work. D3FEND comes with its 
+  own matrix, which is broken down into seven tactics, each with its associated techniques and IDs.
+  For example, the Credential Rotation D3-CRO technique emphasizes the regular rotation of passwords to prevent attackers 
+  from reusing stolen credentials. D3FEND explains how this defense works, what to consider when implementing it, and how 
+  it relates to specific digital artifacts and ATT&CK techniques, helping you see both perspectives: the attacker’s move 
+  and the defender’s countermeasure.
+
+
+ Emulation Plans:
+
+    MITRE's Adversary Emulation Library, primarily maintained and contributed to by The Center for Threat Informed Defense 
+    (CTID), is a free resource of adversary emulation plans. The library currently contains several emulations that mimic 
+    real-world attacks by known threat groups. The emulation plans are a step-by-step guide on how to mimic the specific 
+    threat group. 
+
+
+ Caldera:
+
+  Caldera is an automated adversary emulation tool designed to help security teams test and enhance their defenses. 
+  It provides the ability to simulate real-world attacker behavior utilizing the ATT&CK framework. This allows defenders 
+  to evaluate detection methods and practice incident response in a controlled environment. Caldera supports offensive and
+  defensive operations, making it a powerful tool for red and blue team exercises.
+
+
+
+
