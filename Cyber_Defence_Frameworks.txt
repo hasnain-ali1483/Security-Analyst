@@ -2,105 +2,270 @@ Pain of Pyramid:
 
  Hash Values(Trivial):
 
- The hash value is a numeric value of a fixed length that uniquely identifies data. A hash value is the result of a hashing 
- algorithm. The following are some of the most common hashing algorithms: 
+  The hash value is a numeric value of a fixed length that uniquely identifies data. A hash value is the result of a hashing 
+  algorithm. The following are some of the most common hashing algorithms: 
 
-  ->MD5: It is a cryptographic hash function with a 128-bit hash value. MD5 hashes are NOT considered cryptographically secure. 
-    In 2011, the IETF published RFC 6151, "Updated Security Considerations for the MD5 Message-Digest and the HMAC-MD5 
-    Algorithms," which mentioned a number of attacks against MD5 hashes, including the hash collision.
+   ->MD5: It is a cryptographic hash function with a 128-bit hash value. MD5 hashes are NOT considered cryptographically secure. 
+     In 2011, the IETF published RFC 6151, "Updated Security Considerations for the MD5 Message-Digest and the HMAC-MD5 
+     Algorithms," which mentioned a number of attacks against MD5 hashes, including the hash collision.
 
-  ->SHA1: When data is fed to SHA-1 Hashing Algorithm, SHA-1 takes an input and produces a 160-bit hash value string as a 40 
-    digit hexadecimal number. NIST deprecated the use of SHA-1 in 2011 and banned its use for digital signatures at the end 
-    of 2013 based on it being susceptible to brute-force attacks.
+   ->SHA1: When data is fed to SHA-1 Hashing Algorithm, SHA-1 takes an input and produces a 160-bit hash value string as a 40 
+     digit hexadecimal number. NIST deprecated the use of SHA-1 in 2011 and banned its use for digital signatures at the end 
+     of 2013 based on it being susceptible to brute-force attacks.
 
-  ->SHA2: SHA-2 Hashing Algorithm was designed by The National Institute of Standards and Technology (NIST) and the National 
-    Security Agency (NSA) in 2001 to replace SHA-1. SHA-2 has many variants, and arguably the most common is SHA-256. The SHA-256 
-    algorithm returns a hash value of 256-bits as a 64 digit hexadecimal number.
+   ->SHA2: SHA-2 Hashing Algorithm was designed by The National Institute of Standards and Technology (NIST) and the National 
+     Security Agency (NSA) in 2001 to replace SHA-1. SHA-2 has many variants, and arguably the most common is SHA-256. The SHA-256 
+     algorithm returns a hash value of 256-bits as a 64 digit hexadecimal number.
 
-  A hash is not considered to be cryptographically secure if two files have the same hash value or digest.
+   A hash is not considered to be cryptographically secure if two files have the same hash value or digest.
 
- Security professionals usually use the hash values to gain insight into a specific malware sample, a malicious or a suspicious 
- file, and as a way to uniquely identify and reference the malicious artifact.
- Various online tools can be used to do hash lookups like VirusTotal and Metadefender Cloud - OPSWAT.
- It is really easy to spot a malicious file if we have the hash. However, as an attacker, modifying a file by even a single bit is 
- trivial, which would produce a different hash value. With so many variations and instances of known malware or ransomware, threat 
- hunting using file hashes as the IOC (Indicators of Compromise) can become difficult.
+  Security professionals usually use the hash values to gain insight into a specific malware sample, a malicious or a suspicious 
+  file, and as a way to uniquely identify and reference the malicious artifact.
+  Various online tools can be used to do hash lookups like VirusTotal and Metadefender Cloud - OPSWAT.
+  It is really easy to spot a malicious file if we have the hash. However, as an attacker, modifying a file by even a single bit is 
+  trivial, which would produce a different hash value. With so many variations and instances of known malware or ransomware, threat 
+  hunting using file hashes as the IOC (Indicators of Compromise) can become difficult.
 
  
  IP address(Easy):
 
- From a defense standpoint, knowledge of the IP addresses an adversary uses can be valuable. A common defense tactic is to 
- block, drop, or deny inbound requests from IP addresses on your parameter or external firewall. This tactic is often not 
- bulletproof as it’s trivial for an experienced adversary to recover simply by using a new public IP address.
- One of the ways an adversary can make it challenging to successfully carry out IP blocking is by using Fast Flux.
- According to Akamai, Fast Flux is a DNS technique used by botnets to hide phishing, web proxying, malware delivery, 
- and malware communication activities behind compromised hosts acting as proxies. The purpose of using the Fast Flux network 
- is to make the communication between malware and its command and control server (C&C) challenging to be discovered by security 
- professionals. So, the primary concept of a Fast Flux network is having multiple IP addresses associated with a domain name, which 
- is constantly changing.
+  From a defense standpoint, knowledge of the IP addresses an adversary uses can be valuable. A common defense tactic is to 
+  block, drop, or deny inbound requests from IP addresses on your parameter or external firewall. This tactic is often not 
+  bulletproof as it’s trivial for an experienced adversary to recover simply by using a new public IP address.
+  One of the ways an adversary can make it challenging to successfully carry out IP blocking is by using Fast Flux.
+  According to Akamai, Fast Flux is a DNS technique used by botnets to hide phishing, web proxying, malware delivery, 
+  and malware communication activities behind compromised hosts acting as proxies. The purpose of using the Fast Flux network 
+  is to make the communication between malware and its command and control server (C&C) challenging to be discovered by security 
+  professionals. So, the primary concept of a Fast Flux network is having multiple IP addresses associated with a domain name, which 
+  is constantly changing.
 
  
  Domain Names(Simple):
 
- Domain Names can be thought as simply mapping an IP address to a string of text. A domain name can contain a domain and a 
- top-level domain (e.g. evilcorp.com ) or a sub-domain followed by a domain and top-level domain. Domain Names can be a little 
- more of a pain for the attacker to change as they would most likely need to purchase the domain, register it and modify DNS records. 
- Unfortunately for defenders, many DNS providers have loose standards and provide APIs to make it even easier for the attacker to 
- change the domain.
- What is Punycode? As per Jamf, "Punycode is a way of converting words that cannot be written in ASCII, into a Unicode ASCII encoding."
- Attackers usually hide the malicious domains under URL shorteners.   A URL Shortener is a tool that creates a short and unique URL 
- that will redirect to the specific website specified during the initial step of setting up the URL Shortener link.
+  Domain Names can be thought as simply mapping an IP address to a string of text. A domain name can contain a domain and a 
+  top-level domain (e.g. evilcorp.com ) or a sub-domain followed by a domain and top-level domain. Domain Names can be a little 
+  more of a pain for the attacker to change as they would most likely need to purchase the domain, register it and modify DNS records. 
+  Unfortunately for defenders, many DNS providers have loose standards and provide APIs to make it even easier for the attacker to 
+  change the domain.
+  What is Punycode? As per Jamf, "Punycode is a way of converting words that cannot be written in ASCII, into a Unicode ASCII encoding."
+  Attackers usually hide the malicious domains under URL shorteners.   A URL Shortener is a tool that creates a short and unique URL 
+  that will redirect to the specific website specified during the initial step of setting up the URL Shortener link.
 
 
  Host Artifacts(Annoying):
 
- On this level, the attacker will feel a little more annoyed and frustrated if you can detect the attack. The attacker would need to 
- circle back at this detection level and change his attack tools and methodologies. This is very time-consuming for the attacker, and 
- probably, he will need to spend more resources on his adversary tools.
+  On this level, the attacker will feel a little more annoyed and frustrated if you can detect the attack. The attacker would need to 
+  circle back at this detection level and change his attack tools and methodologies. This is very time-consuming for the attacker, and 
+  probably, he will need to spend more resources on his adversary tools.
 
- Host artifacts are the traces or observables that attackers leave on the system, such as registry values, suspicious process execution, 
- attack patterns or IOCs (Indicators of Compromise), files dropped by malicious applications, or anything exclusive to the current threat.
+  Host artifacts are the traces or observables that attackers leave on the system, such as registry values, suspicious process execution, 
+  attack patterns or IOCs (Indicators of Compromise), files dropped by malicious applications, or anything exclusive to the current threat.
 
 
  Network Artifacts(Annoying):
 
- Network Artifacts also belong to the yellow zone in the Pyramid of Pain. This means if you can detect and respond to the threat, the 
- attacker would need more time to go back and change his tactics or modify the tools, which gives you more time to respond and detect 
- the upcoming threats or remediate the existing ones.
- A network artifact can be a user-agent string, C2 information, or URI patterns followed by the HTTP POST requests.An attacker might 
- use a User-Agent string that hasn’t been observed in your environment before or seems out of the ordinary. The User-Agent is defined 
- by RFC2616 as the request-header field that contains the information about the user agent originating the request.
- Network artifacts can be detected in Wireshark PCAPs (file that contains the packet data of a network) by using a network protocol 
- analyzer such as TShark or exploring IDS (Intrusion Detection System) logging from a source such as Snort.
+  Network Artifacts also belong to the yellow zone in the Pyramid of Pain. This means if you can detect and respond to the threat, the 
+  attacker would need more time to go back and change his tactics or modify the tools, which gives you more time to respond and detect 
+  the upcoming threats or remediate the existing ones.
+  A network artifact can be a user-agent string, C2 information, or URI patterns followed by the HTTP POST requests.An attacker might 
+  use a User-Agent string that hasn’t been observed in your environment before or seems out of the ordinary. The User-Agent is defined 
+  by RFC2616 as the request-header field that contains the information about the user agent originating the request.
+  Network artifacts can be detected in Wireshark PCAPs (file that contains the packet data of a network) by using a network protocol 
+  analyzer such as TShark or exploring IDS (Intrusion Detection System) logging from a source such as Snort.
 
 
  Tools(Challenging):
 
- The attacker would most likely give up trying to break into your network or go back and try to create a new tool that serves the same 
- purpose. It will be a game over for the attackers as they would need to invest some money into building a new tool (if they are capable 
- of doing so), find the tool that has the same potential, or even gets some training to learn how to be proficient in a certain tool. 
- Attackers would use the utilities to create malicious macro documents (maldocs) for spearphishing attempts, a backdoor that can be used 
- to establish C2 (Command and Control Infrastructure), any custom .EXE, and .DLL files, payloads, or password crackers.
- Antivirus signatures, detection rules, and YARA rules can be great weapons for you to use against attackers at this stage.
- MalwareBazaar and Malshare are good resources to provide you with access to the samples, malicious feeds, and YARA results - these 
- all can be very helpful when it comes to threat hunting and incident response. 
- Fuzzy hashing is also a strong weapon against the attacker's tools. Fuzzy hashing helps you to perform similarity analysis - match two 
- files with minor differences based on the fuzzy hash values. One of the examples of fuzzy hashing is the usage of SSDeep; on the SSDeep 
- official website, you can also find the complete explanation for fuzzy hashing. 
+  The attacker would most likely give up trying to break into your network or go back and try to create a new tool that serves the same 
+  purpose. It will be a game over for the attackers as they would need to invest some money into building a new tool (if they are capable 
+  of doing so), find the tool that has the same potential, or even gets some training to learn how to be proficient in a certain tool. 
+  Attackers would use the utilities to create malicious macro documents (maldocs) for spearphishing attempts, a backdoor that can be used 
+  to establish C2 (Command and Control Infrastructure), any custom .EXE, and .DLL files, payloads, or password crackers.
+  Antivirus signatures, detection rules, and YARA rules can be great weapons for you to use against attackers at this stage.
+  MalwareBazaar and Malshare are good resources to provide you with access to the samples, malicious feeds, and YARA results - these 
+  all can be very helpful when it comes to threat hunting and incident response. 
+  Fuzzy hashing is also a strong weapon against the attacker's tools. Fuzzy hashing helps you to perform similarity analysis - match two 
+  files with minor differences based on the fuzzy hash values. One of the examples of fuzzy hashing is the usage of SSDeep; on the SSDeep 
+  official website, you can also find the complete explanation for fuzzy hashing. 
 
 
  TTPs(Tough):
 
- TTPs stands for Tactics, Techniques & Procedures. This includes the whole MITRE ATT&CK Matrix, which means all the steps taken by an 
- adversary to achieve his goal, starting from phishing attempts to persistence and data exfiltration. 
- If you can detect and respond to the TTPs quickly, you leave the adversaries almost no chance to fight back. For, example if you could 
- detect a Pass-the-Hash attack using Windows Event Log Monitoring and remediate it, you would be able to find the compromised host very 
- quickly and stop the lateral movement inside your network. At this point, the attacker would have two options:
+  TTPs stands for Tactics, Techniques & Procedures. This includes the whole MITRE ATT&CK Matrix, which means all the steps taken by an 
+  adversary to achieve his goal, starting from phishing attempts to persistence and data exfiltration. 
+  If you can detect and respond to the TTPs quickly, you leave the adversaries almost no chance to fight back. For, example if you could 
+  detect a Pass-the-Hash attack using Windows Event Log Monitoring and remediate it, you would be able to find the compromised host very 
+  quickly and stop the lateral movement inside your network. At this point, the attacker would have two options:
 
- 1.Go back, do more research and training, reconfigure their custom tools
- 2.Give up and find another target
+  1.Go back, do more research and training, reconfigure their custom tools
+  2.Give up and find another target
 
- Option 2 definitely sounds less time and resource-consuming.
+  Option 2 definitely sounds less time and resource-consuming.
 
 
+
+Cyber Kill Chain:
+
+ The term kill chain is a military concept related to the structure of an attack. It consists of target identification, decision and order 
+ to attack the target, and finally the target destruction. Lockheed Martin, a global security and aerospace company, that established the 
+ Cyber Kill Chain® framework for the cybersecurity industry in 2011 based on the military concept. The framework defines the steps used by 
+ adversaries or malicious actors in cyberspace. To succeed, an adversary needs to go through all phases of the Kill Chain. We will go through 
+ the attack phases and help you better understand adversaries and their techniques used in the attack to defend yourself.
+
+ 1.Reconnaissance:
+
+  Reconnaissance is the research and planning phase of an attack against a system or victim. Adversaries use this phase to gather information 
+  about their target to inform their next steps. This information can include infrastructure details, employee data, business processes, and 
+  exposed technologies. Reconnaissance is often passive and undetected. 
+  Poor recon typically leads to sloppy attacks, while well informed adversaries can create highly targeted, believable payloads that increase 
+  their chances of success.
+  A valuable piece of recon is OSINT (Open-Source Intelligence). With OSINT, adversaries gather insights about their target through publicly 
+  available information. Some public sources where OSINT data can be collected from include:
+
+   ->Search engines
+   ->Print and online media
+   ->Social media accounts
+   ->Online forums and blogs
+   ->Online public record databases
+   ->WHOIS and technical data
+ 
+   Types:
+
+   ->Passive Recon: This involves having no direct interaction with the target. This may include WHOIS lookups, social media scraping, or 
+     reviewing breach data.
+ 
+   ->Active Recon: This involves direct contact with the target with activities such as social engineering, port scanning, banner grabbing, 
+     or probing for open services.
+
+  Email harvesting is the process of obtaining email addresses from public, paid, or free services. An attacker can use email-address harvesting 
+  for a phishing attack (a type of social-engineering attack used to steal sensitive data, including login credentials and credit card numbers). 
+  The attacker will have a big arsenal of tools available for reconnaissance purposes. Here are some of them:
+
+   ->theHarvester(opens in new tab): other than gathering emails, this tool is also capable of gathering names, subdomains, IPs, and URLs using 
+     multiple public data sources.
+
+   ->Hunter.io(opens in new tab): this is an email hunting tool that will let you obtain contact information associated with the domain.
+
+   ->OSINT Framework(opens in new tab): OSINT Framework provides the collection of OSINT tools based on various categories.
+
+
+ 2.Weaponization:
+
+  After a successful reconnaissance stage, attacker would work on turning the raw information into actionable attack tools through crafting malware 
+  and exploits into a payload. Most attackers usually use automated tools to generate the malware or refer to the DarkWeb(opens in new tab) to 
+  purchase the malware. More sophisticated actors or nation-sponsored APT (Advanced Persistent Threat Groups) would write their custom malware to 
+  make the malware sample unique and evade detection on the target.
+
+
+ 3.Delivery:
+
+  Delivery is when attacker decides to choose the method for transmitting the payload or the malware onto the target environment. There are plenty 
+  of options to choose from: 
+
+   ->Phishing email: after conducting the reconnaissance and determining the targets for the attack, the malicious actor could craft a malicious 
+     email that would target either a specific person (spear phishing attack) or multiple people in the company. The email would contain a malicious 
+     link or email attachment that would result into a compromise.
+
+   ->USB drops offer the attacker a physical delivery medium into public places like coffee shops, car parks, or on the street. An attacker might 
+     decide to conduct a sophisticated USB Drop Attack by printing the company's logo on the USB drives and mailing them to the company while 
+     pretending to be a customer sending the USB devices as a gift.
+
+   ->Watering hole attacks are targeted and designed to aim at a specific group of people by compromising the website they are usually visiting, 
+     redirecting them to a malicious website of the attacker's choice or creation. Victims would unintentionally download malware or a malicious 
+     application to their computer, resulting in a drive-by download. An example can be a malicious pop-up asking to download a fake Browser extension.
+
+ 4.Exploitation:
+
+  Exploitation is the moment the attacker's code executes on the target, taking advantage of a known vulnerability. In this phase, Megatron can 
+  opt to utilise a number of key techniques to gain access:
+ 
+   ->Malicious macro execution: This may have been delivered through a phishing email, that would execute ransomware when the victim opens it.
+
+   ->Zero-day exploits: These leverages on unknown and unpatched flaws in a system. These exploits leave no opportunity for detection at the 
+     beginning.
+  
+   ->Known CVEs: The attacker can choose to exploit unpatched public vulnerabilities found on the target environment.
+
+  After gaining access to the system, the malicious actor could exploit software, system, or server-based vulnerabilities to escalate the 
+  privileges or move laterally through the network. 
+
+  Signs of exploitation to look out for include:
+
+   ->Unexpected process spawns.
+   
+   ->Registry changes or new services created.
+   
+   ->Suspicious command-line arguments found in system logs.
+
+ 5.Installation:
+
+  As you have learned from the Weaponization phase, the backdoor lets an attacker bypass security measures and hide the access. A backdoor is 
+  also known as an access point. Once the attacker gets access to the system, he would want to reconnect back to the system if he loses the 
+  connection to it or if he got detected and got the initial access removed. Or if the system is later patched, they will no longer have access 
+  to it. That is when the attacker needs to install a persistent backdoor. A persistent backdoor will let the attacker access the system he 
+  compromised in the past.
+  
+  The persistence can be achieved through:
+
+   ->Installing a web shell on the webserver. A web shell is a malicious script written in web development programming languages such as 
+     ASP, PHP, or JSP used by an attacker to maintain access to the compromised system. Because of the web shell simplicity and file 
+     formatting (.php, .asp, .aspx, .jsp, etc.) can be difficult to detect and might be classified as benign.
+
+   ->Installing a backdoor on the victim's machine. For example, the attacker can use Meterpreter to install a backdoor 
+     on the victim's machine. Meterpreter is a Metasploit Framework payload that gives an interactive shell from which an attacker can 
+     interact with the victim's machine remotely and execute the malicious code.
+
+   ->Creating or modifying Windows services. This technique is known as T1543.003 on MITRE ATT&CK (MITRE ATT&CK® is a knowledge base 
+     of adversary tactics and techniques based on real-world scenarios). An attacker can create or modify the Windows services to execute 
+     the malicious scripts or payloads regularly as a part of the persistence. An attacker can use the tools like ssc.exe (sc.exe lets
+     you Create, Start, Stop, Query, or Delete any Windows Service) and Reg to modify service configurations. The attacker can also 
+     masquerade the malicious payload by using a service name that is known to be related to the Operating System or legitimate software.
+
+   ->Adding the entry to the "run keys" for the malicious payload in the Registry or the Startup Folder. By doing that, the payload will 
+     execute each time the user logs in to the computer. According to MITRE ATT&CK, there is a startup folder location for individual 
+     user accounts and a system-wide startup folder that will be checked no matter what user account logs in.
+
+  In this phase, the attacker can also use the Timestomping technique to avoid detection by the forensic investigator and also to make 
+  the malware appear as a part of a legitimate program. The timestomping technique lets an attacker modify the file's timestamps, 
+  including to modify, access, create and change times.     
+
+
+ 6.Command & Control:
+
+  After getting persistence and executing the malware on the victim's machine, attacker opens up the C2 (Command and Control) channel 
+  through the malware to remotely control and manipulate the victim. This term is also known as C&C or C2 Beaconing as a type of 
+  malicious communication between a C&C server and malware on the infected host. The infected host will consistently communicate 
+  with the C2 server; that is also where the beaconing term came from. The compromised endpoint would communicate with an external 
+  server set up by an attacker to establish a command & control channel. After establishing the connection, the attacker has full 
+  control of the victim's machine. Until recently, IRC (Internet Relay Chat) was the traditional C2 channel used by attackers. 
+  This is no longer the case, as modern security solutions can easily detect malicious IRC traffic. The most common C2 channels 
+  used by adversaries include:
+
+   ->HTTP on port 80 and HTTPS on port 443, where this type of beaconing blends the malicious traffic with the legitimate traffic 
+     and can help the attacker evade firewalls.
+
+   ->DNS (Domain Name Server), where the infected machine makes constant DNS requests to the DNS server that belongs to an attacker, 
+     this type of C2 communication is also known as DNS Tunneling.
+
+
+ 7.Exfiltration:
+
+  After going through six phases of the attack, Megatron can finally achieve his goals, which means taking action on the original 
+  objectives. With hands-on keyboard access, the attacker can achieve the following: 
+
+   ->Collect the credentials from users.
+
+   ->Perform privilege escalation (gaining elevated access like domain administrator access from a workstation by exploiting the 
+     misconfiguration).
+
+   ->Internal reconnaissance (for example, an attacker gets to interact with internal software to find its vulnerabilities).
+
+   ->Lateral movement through the company's environment.
+
+   ->Collect and exfiltrate sensitive data.
+
+   ->Deleting the backups and shadow copies. Shadow Copy is a Microsoft technology that can create backup copies, snapshots of 
+     computer files, or volumes. 
+
+   ->Overwrite or corrupt data.
 
