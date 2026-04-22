@@ -1,0 +1,105 @@
+Phishing Analysis Fundamental:
+
+ Anatomy of an Email:
+
+  An email is composed of the following elements:
+
+   ->Username: User mailbox that identifies the specific recipient’s mailbox on the email server
+   
+   ->@ symbol: Separates the username from the domain and tells the system where to route the email
+
+   ->Domain name: Specifies the mail server responsible for receiving the message
+
+
+ Email Delivery:
+
+  Simple Mail Transfer Protocol (SMTP): Sends emails
+  Post Office Protocol (POP3): Downloads emails to a device
+  Internet Message Access Protocol (IMAP): Syncs emails across devices
+
+  POP3:
+   
+   ->Emails are downloaded and stored on a single device
+
+   ->Sent messages are stored on the single device from which the email was sent
+  
+   ->Emails can only be accessed from the single device to which the emails were sent
+
+   ->Emails are typically removed from the server after download
+
+  IMAP:
+
+   ->Emails are stored on the server and can be downloaded to multiple devices
+   
+   ->Sent messages are stored on the server
+   
+   ->Syncs messages across multiple devices
+   
+   ->Emails remain on the server unless explicitly deleted
+
+  Email's Journey:
+
+   1.User sends an email: The sender’s email client sends the message to their mail server using SMTP
+   
+   2.Mail server queries DNS: The sending server asks DNS for the recipient domain’s mail server
+   
+   3.DNS responds: DNS returns the address of the recipient’s mail server
+   
+   4.Email is delivered: The message is sent across the Internet to the recipient’s server
+   
+   5.The recipient checks their mailbox: The recipient’s email client connects to their mail server
+   
+   6.Email is retrieved: The message is downloaded (POP3) or synced (IMAP) to the recipient’s device
+
+  Email's Header:
+
+   ->From: The sender's email address
+   ->To: The receiver's email address
+   ->Reply to: Address where replies are sent (not required)
+   ->Subject: The email's subject line
+   ->Date: The time and date that the email was sent
+
+   To view the raw message data of the email, click on the three dot on the email on gmail and click on "show original".
+   Viewing the email source displays the full raw message, including all header fields and the email body, which may 
+   contain plain text or HTML.
+
+  Email's Body:
+
+   the body of an email contains the message. Emails are sent as text only or formatted in HTML. HTML supports elements 
+   such as images, links, and styling. Most email clients show you the rendered content. You can also inspect the 
+   underlying source to see how the message is structured, spot embedded elements, and look for signs of phishing or 
+   malicious content.
+   You can analyse the body by viewing the raw message.
+
+  Anatomy of Phishing Email:
+
+   ->Spoofed From Address: The sender’s email is spoofed to appear as a trusted entity (noreply@microsof.com)
+
+   ->Urgent Subject or Message: The email creates a sense of urgency (“Your account will be locked in 24 hours”)
+
+   ->Brand Impersonation: The email is designed to mimic a legitimate organization (logos or colors matching a real 
+     company)
+
+   ->Grammar & Spelling Issues: The message may contain errors, though with AI these are now less common (awkward 
+     phrasing or unnatural wording)
+
+   ->Generic Content: The message lacks personalization (“Dear Customer” instead of your name)
+ 
+   ->Hidden or Shortened Links: Hyperlinks may disguise their true destination (bit.ly/secure-login)
+
+   ->Malicious Attachments: Attachments are included and disguised as legitimate files (invoice.pdf.exe)
+
+   Safe Analysis:
+
+    When dealing with hyperlinks and attachments, be careful not to click them accidentally. Hyperlinks and IP 
+    addresses should be defanged. Defanging makes URLs, domains, or email addresses unclickable to prevent accidental 
+    clicks that could lead to a security breach. It works by replacing special characters, such as @ in an email or . 
+    in a URL, with alternate characters:
+
+     ->Original URL: http://www.suspiciousdomain.com
+     ->Defanged URL: hxxp[://]www[.]suspiciousdomain[.]com
+
+
+
+
+
