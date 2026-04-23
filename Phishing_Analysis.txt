@@ -99,6 +99,62 @@ Phishing Analysis Fundamental:
      ->Original URL: http://www.suspiciousdomain.com
      ->Defanged URL: hxxp[://]www[.]suspiciousdomain[.]com
 
+    Wheregoes.com can be used to investigate shortened URLs without having to actually visit the destination.
+
+
+
+Phishing Analysis Tools:
+
+ Identifying Artifacts:
+
+  Header Artifacts:
+
+   When you begin your analysis with the email header, you should take note of the following points: 
+
+    ->Sender email address: Where did the email originate from?
+    ->Sender IP address: What is the source IP, and what does a reverse lookup reveal?
+    ->Email subject line: Does it contain urgency or a call to action?
+    ->Recipient email address: Who is the intended recipient (To/CC/BCC)?
+    ->Reply-To email address: Where are responses being directed?
+    ->Date and time: When was the email sent?
+
+  Body Artifacts:
+
+   Next comes the email body, which has its own set of artifacts to be aware of: 
+
+    ->URLs and hyperlinks: Identify all links and expand shortened URLs to reveal their true destination
+    ->Attachment name(s): What files are included, and do their names or extensions appear suspicious
+    ->Attachment hash: Generate a hash value for threat intelligence lookups 
+
+  Email Header Analysis:
+
+   Mail Header Analysis:
+
+    toolbox.googleapps.com part of the Google Admin Toolbox, helps analyze email headers. By simply pasting 
+    the full header into the tool, you can quickly extract key details such as the sender’s IP address, 
+    routing path, and potential misconfigurations.  
+
+   IP and URL Reputation Analysis:
+
+    ipinfo.io  is a simple and effective tool for gathering information about an IP address. By entering 
+    an IP, you can quickly view details such as its geographic location and associated organization. 
+    This helps analysts determine whether an IP is potentially malicious.
+
+    URLScan.io is a tool that enables analysts to safely investigate websites without visiting them directly. 
+    By submitting a URL, the service simulates a real user browsing session and records all activity generated 
+    by the page. It also captures a screenshot of the site and provides insight into its behavior, helping 
+    analysts quickly identify suspicious or potentially malicious content.
+
+    talosintelligence.com is a threat intelligence tool from Cisco that enables analysts to assess the reputation 
+    of IP addresses, domains, and networks. By submitting an indicator, you can quickly assess whether it has 
+    been associated with malicious activity and view its classification.
+
+
+
+
+   
+
+
 
 
 
