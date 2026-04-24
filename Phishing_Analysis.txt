@@ -17,6 +17,7 @@ Phishing Analysis Fundamental:
   Post Office Protocol (POP3): Downloads emails to a device
   Internet Message Access Protocol (IMAP): Syncs emails across devices
 
+
   POP3:
    
    ->Emails are downloaded and stored on a single device
@@ -27,6 +28,7 @@ Phishing Analysis Fundamental:
 
    ->Emails are typically removed from the server after download
 
+
   IMAP:
 
    ->Emails are stored on the server and can be downloaded to multiple devices
@@ -36,6 +38,7 @@ Phishing Analysis Fundamental:
    ->Syncs messages across multiple devices
    
    ->Emails remain on the server unless explicitly deleted
+
 
   Email's Journey:
 
@@ -51,6 +54,7 @@ Phishing Analysis Fundamental:
    
    6.Email is retrieved: The message is downloaded (POP3) or synced (IMAP) to the recipient’s device
 
+
   Email's Header:
 
    ->From: The sender's email address
@@ -63,6 +67,7 @@ Phishing Analysis Fundamental:
    Viewing the email source displays the full raw message, including all header fields and the email body, which may 
    contain plain text or HTML.
 
+
   Email's Body:
 
    the body of an email contains the message. Emails are sent as text only or formatted in HTML. HTML supports elements 
@@ -70,6 +75,7 @@ Phishing Analysis Fundamental:
    underlying source to see how the message is structured, spot embedded elements, and look for signs of phishing or 
    malicious content.
    You can analyse the body by viewing the raw message.
+
 
   Anatomy of Phishing Email:
 
@@ -88,6 +94,7 @@ Phishing Analysis Fundamental:
    ->Hidden or Shortened Links: Hyperlinks may disguise their true destination (bit.ly/secure-login)
 
    ->Malicious Attachments: Attachments are included and disguised as legitimate files (invoice.pdf.exe)
+
 
    Safe Analysis:
 
@@ -118,6 +125,7 @@ Phishing Analysis Tools:
     ->Reply-To email address: Where are responses being directed?
     ->Date and time: When was the email sent?
 
+
   Body Artifacts:
 
    Next comes the email body, which has its own set of artifacts to be aware of: 
@@ -125,6 +133,7 @@ Phishing Analysis Tools:
     ->URLs and hyperlinks: Identify all links and expand shortened URLs to reveal their true destination
     ->Attachment name(s): What files are included, and do their names or extensions appear suspicious
     ->Attachment hash: Generate a hash value for threat intelligence lookups 
+
 
   Email Header Analysis:
 
@@ -150,12 +159,51 @@ Phishing Analysis Tools:
     been associated with malicious activity and view its classification.
 
 
+  Email Body Analysis:
+
+   convertcsv.com/url-extractor.htm let you paste raw email content and automatically parse all embedded links, 
+   saving time and reducing the risk of missing hidden or obfuscated URLs.
+
+   talosintelligence.com can analyze hash value of an attachment file.
+
+   VirusTotal is a widely used tool that allows analysts to check the reputation of files, URLs, IP addresses, 
+   and domains using data from dozens of security vendors. By submitting a file or indicator, you can quickly 
+   determine whether it has been flagged as malicious and review detailed detection results. VirusTotal also 
+   allows users to upload files and submit URLs for analysis, making it a powerful resource for investigating 
+   suspicious artifacts.
 
 
-   
+  Malware Sandboxes:
+
+   Any.run: 
+    ANY.RUN is an interactive malware sandbox that allows analysts to safely execute and observe suspicious 
+    files and URLs in real time. Unlike traditional sandboxes, it provides a hands-on experience in which you 
+    can interact with the environment, monitor processes, view network activity, and analyze system changes as 
+    they happen. This makes it a powerful tool for understanding how malware behaves and identifying key 
+    indicators of compromise in a controlled setting.
+
+   Hybrid Analysis:
+
+    hybrid-analysis.com is a free malware analysis sandbox that allows analysts to upload and examine suspicious 
+    files in a controlled environment. It provides detailed insights into file behavior, including system changes, 
+    network activity, and indicators of compromise, helping analysts better understand the potential impact of a 
+    malicious file.
+
+   JoesSandbox:
+
+    JOESecurity created the joesandbox.com  for advanced malware analysis. It performs both static and dynamic 
+    analysis on suspicious files and URLs. It generates comprehensive reports that highlight behavior, indicators 
+    of compromise, and threat classifications.
 
 
+  PhishTool:
 
-
-
-
+   A powerful platform that streamlines phishing investigations is phishtool.com. It is designed for security 
+   professionals across multiple disciplines. PhishTool automates much of the manual work involved in analyzing 
+   suspicious emails. Whether you are a SOC analyst triaging user-reported messages, a threat intelligence analyst 
+   collecting indicators, or a researcher investigating phishing kits, PhishTool brings everything together in 
+   one place. By combining threat intelligence, OSINT, email metadata, and automated analysis workflows, PhishTool 
+   provides a centralized view of phishing activity, helping you quickly identify malicious intent and extract 
+   valuable indicators of compromise. One of PhishTool’s standout features is its integration with VirusTotal, 
+   allowing you to view reputation and detection results without leaving the tool. This seamless integration 
+   helps speed up investigations by bringing external intelligence directly into your workflow.
