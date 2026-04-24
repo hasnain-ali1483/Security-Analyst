@@ -207,3 +207,53 @@ Phishing Analysis Tools:
    valuable indicators of compromise. One of PhishTool’s standout features is its integration with VirusTotal, 
    allowing you to view reputation and detection results without leaving the tool. This seamless integration 
    helps speed up investigations by bringing external intelligence directly into your workflow.
+
+
+
+Phishing Prevention:
+
+ Sender Policy Framework(SPF):
+
+  Sender Policy Framework (SPF) is used to authenticate the sender of an email. With an SPF record in place, 
+  Internet Service Providers can verify that a mail server is authorized to send email for a specific domain. 
+  An SPF record is a DNS TXT record containing a list of the IP addresses that are allowed to send email on 
+  behalf of your domain. When an email is sent, the receiving mail server checks the domain's SPF record to 
+  verify whether the sending server is authorized to send messages on behalf of that domain. The delivery of 
+  the email (intended action) is based on the result of the SPF record verification.
+
+
+ DomainKeys Identified Mail(DKIM):
+
+  Like SPF, DKIM is an open standard for email authentication that is used for DMARC alignment. A DKIM record 
+  exists in the DNS, but it is more complex than SPF. DKIM’s advantage is that it can survive forwarding, 
+  which makes it superior to SPF and a foundation for securing your email. When an email is sent, the sending 
+  mail server uses a private key to add a digital signature to the email. The receiving server retrieves the 
+  public key from the domain's DKIM record to verify that the message truly came from the domain. If the 
+  signature matches, the email is authentic; otherwise, it may be flagged or rejected.
+
+
+ Domain-Based Message Authentication, Reporting, and Conformance (DMARC):
+
+  DMARC, an open source standard, uses a concept called alignment to tie the result of two other open source 
+  standards,  SPF (a published list of servers that are authorized to send email on behalf of a domain) and 
+  DKIM (a tamper-evident domain seal associated with a piece of email), to the content of an email. 
+  This means that DMARC ensures the sender's domain matches the domains verified by SPF and DKIM. If the 
+  alignment fails, DMARC instructs the recipient server on how to handle the email based on a policy 
+  specified in the record.
+
+
+ Secure/Multipurpose Internet Mail Extensions (S/MIME):
+
+  It is a standard protocol for sending digitally signed and encrypted messages. It is based on public key 
+  cryptography, where the private key is never shared and the public key can be distributed openly. The two 
+  main components and security features of S/MIME are:
+
+   Digital Signature:
+
+    The sender signs the message with their private key, the recepient verifies the sender's identity using 
+    the sender's public key.
+
+   Encryption:
+
+    The sender encrypts the message using the recipient's public key, allowing only the recipient to decrypt 
+    it with their private key.
