@@ -1,0 +1,91 @@
+Purpose of Network Traffic Analysis:
+ 
+ Generally, we will use network traffic analysis to:
+ 
+  ->Monitor network performance
+  ->Check for abnormalities in the network. E.g., sudden performance peaks, slow network, etc
+  ->Inspect the content of suspicious communication internally and externally. E.g., exfiltration 
+    via DNS, download of a malicious ZIP file over HTTP, lateral movement, etc
+ 
+ From a SOC perspective, network traffic analysis helps:
+ 
+  ->Detecting suspicious or malicious activity
+  ->Reconstructing attacks during incident response
+  ->Verifying and validating alerts
+
+
+
+ TCP/IP Model:
+
+  The best way to showcase the traffic we can observe in the network is by using the architecture 
+  implemented in nearly every device with a network interface: the TCP/IP stack.
+
+  ->Application: 
+    On the application layer, we can find two important information structures: the application header 
+    information and the application data itself (payload). This information will change depending on which 
+    application layer protocol is used. Let's look at an example of HTTP.
+    Most web proxies and firewalls log the application headers of a client sending a GET request and the 
+    server's response. What they don't log is the application data or payload.
+
+  ->Transport:
+    The application data and header are segmented and encapsulated at the transport layer into smaller pieces. 
+    Each piece includes a transport header, in most cases TCP or UDP.
+    Firewall logs often include the source and destination ports and the flags, but all the other fields are 
+    often not included. However, they are valuable for detecting certain types of attacks, such as session 
+    hijacking. Session hijacking can be detected by analyzing the sequence numbers included in the header. 
+    If the sequence numbers are suddenly far apart, further investigation is warranted. The output below shows 
+    a series of packets captured with Wireshark.
+
+  ->Internet:
+    When the transport layer sends down a segment, the internet layer also adds its header. If the segment is 
+    larger than the Maximum Transmission Unit (MTU), it will be divided into fragments, and a header will be added 
+    to each of them. The fields that are most often logged are the source and destination IP and TTL. This is 
+    sufficient for most use cases. But, if we want to, for example, detect fragmentation attacks, we will need to 
+    inspect the fragment offset and total length fields as well. There are different variations of a fragmentation 
+    attack. For example, an attacker can create tiny fragments to evade the IDS or mess up the reassembly of 
+    fragments by using overlapping byte ranges. 
+
+  ->Link:
+    Once the internet layer finishes encapsulation, the IP packet is sent to the link layer. The link layer adds 
+    its header as well, containing more addressing information. Most logs will display the source and destination 
+    MAC addresses. For certain types of attacks, for example, ARP poisoning or spoofing, the information in the 
+    logs won't be sufficient. For these types of attacks, we need the full packet and context. What you, for 
+    example, can't see in a log is when the MAC address appears from multiple interfaces or when many gratuitous 
+    ARP packets are sent out with conflicting MAC addresses.
+
+
+
+ Sources and Flows:
+
+  Sources:
+  There is two network traffic sources exist: endpoint and intermediary devices. These devices can be found within 
+  the LAN and WAN.
+
+   Intermediary Sources:
+   These are devices through which traffic mostly passes. While they generate some traffic, it is significantly 
+   lower than what endpoint devices generate. Under this category, we can find firewalls, switches, web proxies, 
+   IDS, IPS, routers, access points, wireless LAN controllers, and many more. Maybe less relevant for us, but all 
+   the infrastructure of Internet Service Providers is also considered part of this category.
+   The traffic that originates from these devices comes from services like routing protocols (EIGRP, OSPF, BGP), 
+   management protocols (SNMP, PING), logging protocols (SYSLOG), and other supporting protocols (ARP, STP, DHCP).
+
+   Endpoint Sources:
+   These are devices where traffic originates and ends. Endpoint devices take the bulk of the network bandwidth. 
+   Devices that fall under this category are servers, hosts, IoT devices, printers, virtual machines, cloud resources, 
+   mobile phones, tablets, and many more.
+
+ 
+  Flows:
+  A network traffic flow is typically determined by the services available in the network, such as Active Directory, 
+  SMB, HTTPS, and so on. In a typical corporate network, we can group these flows into North-South and East-West traffic.
+
+   North-South Traffic:
+   NS traffic is often monitored closely as it flows from the LAN to the WAN and vice versa. The most well-known 
+   services in this category are client-server protocols like HTTPS, DNS, SSH, VPN, SMTP, RDP, and many more. Each 
+   of these protocols has two streams: ingress (inbound) and egress (outbound). All of this traffic passes the firewall 
+   in one way or another. Configuring firewall rules and logging properly are key to visibility.
+
+   East-West Traffic:
+   EW traffic stays within the corporate LAN, so it is often monitored less. However, it is important to keep track of 
+   these flows. When the network is compromised, an attacker will often exploit different services internally to move 
+   laterally within the network. As we see below, there are many services within this category. 
