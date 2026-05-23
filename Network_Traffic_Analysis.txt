@@ -388,3 +388,25 @@ Wireshark:
    "Edit --> Preferences --> Name Resolution --> MaxMind database directories" menu. Once you download and indicate the 
    path, Wireshark will automatically provide GeoIP information under the IP protocol details for the matched IP addresses.
 
+
+   IPv4 and IPv6:
+
+    The statistics menu has two options for narrowing the statistics on packets containing a specific IP version. Thus, 
+    analysts can identify and list all events linked to specific IP versions in a single window and use it for the event 
+    of interest. You can use the "Statistics --> IPvX Statistics" menu to view this info.
+
+
+   DNS:
+
+    This option breaks down all DNS packets from the capture file and helps analysts view the findings in a tree view based 
+    on packet counters and percentages of the DNS protocol. Thus analysts can view the DNS service's overall usage, including 
+    rcode, opcode, class, query type, service and query stats and use it for the event of interest. You can use the  
+    "Statistics --> DNS" menu to view this info.
+
+
+   HTTP:
+
+    This option breaks down all HTTP packets from the capture file and helps analysts view the findings in a tree view based 
+    on packet counters and percentages of the HTTP protocol. Thus analysts can view the HTTP service's overall usage, including 
+    request and response codes and the original requests.  You can use the "Statistics --> HTTP"menu to view this info.
+
