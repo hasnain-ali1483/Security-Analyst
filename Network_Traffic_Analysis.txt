@@ -339,54 +339,54 @@ Wireshark:
     ->ip.dst == 10.10.10.111: Show all packets sent to 10.10.10.111.
 
 
-   TCP and UDP Filters:
+  TCP and UDP Filters:
 
-    TCP filters help analysts filter the traffic according to protocol-level information from the packets (Transport layer of 
-    the OSI model). These filters filter transport protocol level information like source and destination ports, sequence number, 
-    acknowledgement number, windows size, timestamps, flags, length and protocol errors.
+   TCP filters help analysts filter the traffic according to protocol-level information from the packets (Transport layer of 
+   the OSI model). These filters filter transport protocol level information like source and destination ports, sequence number, 
+   acknowledgement number, windows size, timestamps, flags, length and protocol errors.
 
-    ->tcp.port == 80: Show all TCP packets with port 80 
+   ->tcp.port == 80: Show all TCP packets with port 80 
 
-    ->tcp.srcport == 1234: Show all TCP packets originating from port 1234
+   ->tcp.srcport == 1234: Show all TCP packets originating from port 1234
 
-    ->tcp.dstport == 80: Show all TCP packets sent to port 80
+   ->tcp.dstport == 80: Show all TCP packets sent to port 80
 
-    ->udp.port == 53: Show all UDP packets with port 53
+   ->udp.port == 53: Show all UDP packets with port 53
 
-    ->udp.srcport == 1234: Show all UDP packets originating from port 1234
+   ->udp.srcport == 1234: Show all UDP packets originating from port 1234
 
-    ->udp.dstport == 5353: Show all UDP packets sent to port 5353
-
-
-   Application Level Protocol Filters | HTTP and DNS:
-
-    Application-level protocol filters help analysts filter the traffic according to application protocol level information from 
-    the packets (Application layer of the OSI model ). These filters filter application-specific information, like payload and 
-    linked data, depending on the protocol type.
-
-    ->http: Show all HTTP packets
-
-    ->http.response.code == 200: Show all packets with HTTP response code "200"
-
-    ->http.request.method == "GET": Show all HTTP GET requests
-
-    ->http.request.method == "POST": Show all HTTP POST requests
-
-    ->dns: 	Show all DNS packets
-
-    ->dns.flags.response == 0: Show all DNS requests
-
-    ->dns.flags.response == 1: Show all DNS responses
-
-    ->dns.qry.type == 1: Show all DNS "A" records
+   ->udp.dstport == 5353: Show all UDP packets sent to port 5353
 
 
-   Display Filter Expressions:
+  Application Level Protocol Filters | HTTP and DNS:
 
-    Wireshark has a built-in option (Display Filter Expression) that stores all supported protocol structures to help analysts 
-    create display filters. When an analyst can't recall the required filter for a specific protocol or is unsure about the 
-    assignable values for a filter, the Display Filter Expressions menu provides an easy-to-use display filter builder guide. 
-    It is available under the "Analyse --> Display Filter Expression" menu.
+   Application-level protocol filters help analysts filter the traffic according to application protocol level information from 
+   the packets (Application layer of the OSI model ). These filters filter application-specific information, like payload and 
+   linked data, depending on the protocol type.
+
+   ->http: Show all HTTP packets
+
+   ->http.response.code == 200: Show all packets with HTTP response code "200"
+
+   ->http.request.method == "GET": Show all HTTP GET requests
+
+   ->http.request.method == "POST": Show all HTTP POST requests
+
+   ->dns: Show all DNS packets
+
+   ->dns.flags.response == 0: Show all DNS requests
+
+   ->dns.flags.response == 1: Show all DNS responses
+
+   ->dns.qry.type == 1: Show all DNS "A" records
+
+
+  Display Filter Expressions:
+
+   Wireshark has a built-in option (Display Filter Expression) that stores all supported protocol structures to help analysts 
+   create display filters. When an analyst can't recall the required filter for a specific protocol or is unsure about the 
+   assignable values for a filter, the Display Filter Expressions menu provides an easy-to-use display filter builder guide. 
+   It is available under the "Analyse --> Display Filter Expression" menu.
 
 
 
