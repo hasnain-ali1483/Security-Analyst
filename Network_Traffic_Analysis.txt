@@ -680,4 +680,43 @@ Wireshark:
     ICMP Type 3, Code 3 message. (Destination unreachable, port unreachable)
 
    The given filter shows the UDP scan patterns in a capture file.
-   icmp.type==3 and icmp.code==3  
+   icmp.type==3 and icmp.code==3
+
+
+
+
+ ARP Poisoning & Man In the Middle:
+
+  ARP protocol, or Address Resolution Protocol (ARP), is the technology responsible for allowing devices to identify 
+  themselves on a network. Address Resolution Protocol Poisoning (also known as ARP Spoofing or Man In The Middle 
+  (MITM) attack) is a type of attack that involves network jamming/manipulating by sending malicious ARP packets 
+  to the default gateway. The ultimate aim is to manipulate the"IP to MAC address table"and sniff the traffic of 
+  the target host.
+
+  ARP analysis:
+
+   ->Works on the local network
+
+   ->Enables the communication between MAC addresses
+
+   ->Not a secure protocol
+
+   ->Not a routable protocol
+
+   ->It doesn't have an authentication function
+
+   ->Common patterns are request & response, announcement and gratuitous packets.
+
+   Wireshark filter:
+
+    ->arp: Global Search
+
+    ->arp.opcode == 1: ARP requests
+
+    ->arp.opcode == 2: ARP responses
+
+    ->arp.dst.hw_mac==00:00:00:00:00:00: Arp scanning
+
+    ->arp.duplicate-address-detected or arp.duplicate-address-frame: ARP poisoning detection
+
+    ->((arp) && (arp.opcode == 1)) && (arp.src.hw_mac == target-mac-address): Possible ARP flooding from detection
