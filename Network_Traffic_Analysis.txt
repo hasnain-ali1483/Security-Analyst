@@ -874,7 +874,60 @@ Wireshark:
 
 
 
-  HTTP
+  HTTP Analysis:
+
+   Hypertext Transfer Protocol (HTTP) is a cleartext-based, request-response and client-server protocol. It is the standard type of network 
+   activity to request/serve web pages, and by default, it is not blocked by any network perimeter. As a result of being unencrypted and 
+   the backbone of web traffic, HTTP is one of the must-to-know protocols in traffic analysis. Following attacks could be detected with 
+   the help of HTTP analysis: Phishing pages, Web attacks, Data exfiltration, Command and control traffic (C2) etc.
+
+   ->http or http2: Global Search
+
+   ->http.request.method == "GET"
+
+   ->http.request.method == "POST"
+
+   ->http.request
+
+   ->http.response.code == 200: Request successful
+
+   ->http.response.code == 301: Resource is moved to a new URL/path (permanently)
+
+   ->http.response.code == 302: Resource is moved to a new URL/path (temporarily)
+
+   ->http.response.code == 400: Server didn't understand the request
+
+   ->http.response.code == 401: URL needs authorisation (login, etc.)
+
+   ->http.response.code == 403: No access to the requested URL
+
+   ->http.response.code == 404: Server can't find the requested URL
+
+   ->http.response.code == 405: Used method is not suitable or blocked
+
+   ->http.response.code == 408: Request look longer than server wait time
+
+   ->http.response.code == 500: Request not completed, unexpected error
+
+   ->http.response.code == 503:  Request not completed server or service is down
+
+   ->http.user_agent contains "nmap": Browser and operating system identification to a web server application
+
+   ->http.request.uri contains "admin": Points the requested resource from the server
+
+   ->http.request.full_uri contains "admin: Complete URI information
+
+   ->http.server contains "apache": Server service name
+
+   ->http.host contains "keyword": Hostname of the server
+
+   ->http.host == "keyword"
+
+   ->http.connection == "Keep-Alive": Connection status
+
+   ->data-text-lines contains "keyword": Cleartext data provided by the server
+
+
 
 
 
