@@ -929,6 +929,25 @@ Wireshark:
 
 
 
+ Decrypting HTTPS Traffic:
+
+  When investigating web traffic, analysts often run across encrypted traffic. This is caused by using the 
+  Hypertext Transfer Protocol Secure (HTTPS) protocol for enhanced security against spoofing, sniffing and 
+  intercepting attacks. HTTPS uses TLS protocol to encrypt communications, so it is impossible to decrypt the 
+  traffic and view the transferred data without having the encryption/decryption key pairs. As this protocol 
+  provides a good level of security for transmitting sensitive data, attackers and malicious websites also use 
+  HTTPS.
+
+  ->tls: Global Search
+
+  ->tls.handshake.type == 1: TLS Client Request
+
+  ->tls.handshake.type == 2: TLS Server response
+
+  ->ssdp: Local Simple Service Discovery Protoco
+
+
+
 
 
 
