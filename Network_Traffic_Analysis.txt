@@ -944,13 +944,13 @@ Wireshark:
 
   ->tls.handshake.type == 2: TLS Server response
 
-  ->ssdp: Local Simple Service Discovery Protoco
+  ->ssdp: Local Simple Service Discovery protocol
 
 
 
 
+NetworkMiner:
 
-
-
-
-
+ NetworkMiner is an open-source Network Forensic Analysis Tool (NFAT). It runs on Windows, Linux, macOS, and FreeBSD, 
+ and can be used two ways: as a passive sniffer that fingerprints hosts, sessions, and open ports without sending 
+ any traffic, or as a PCAP parser that reassembles files and certificates from captured traffic for offline analysis.
